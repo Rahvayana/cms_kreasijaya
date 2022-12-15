@@ -28,7 +28,7 @@
 @yield('style')
 
 </head>
-<body class="skin-blue sidebar-mini">
+<body class="skin-blue sidebar-mini {{Route::currentRouteNamed('pos.point-of-sale') ? 'sidebar-collapse' : '' }}">
 <div class="wrapper boxed-wrapper">
   <header class="main-header"> 
     <!-- Logo --> 
@@ -161,6 +161,13 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="treeview active"> <a href="{{ route('home') }}"> <i class="fa fa-home"></i> <span>Dashboard</span> <span class="pull-right-container"> </span> </a>
+        </li>
+        <li class="treeview {{ Route::currentRouteNamed('pos.*') ? 'active' : '' }}"> <a href="#"> <i class="fa  fa-shopping-cart"></i> <span>Point of Sale</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+          <ul class="treeview-menu">
+            <li class="{{Route::currentRouteNamed('pos.point-of-sale') ? 'active' : '' }}"><a href="{{ route('pos.point-of-sale') }}">POS</a></li>
+            <li class="{{Route::currentRouteNamed('pos.product') ? 'active' : '' }}"><a href="{{ route('pos.product') }}">Semua Product</a></li>
+            <li class="{{Route::currentRouteNamed('portfolio.add') ? 'active' : '' }}"><a href="{{ route('portfolio.add') }}">Reports</a></li>
+          </ul>
         </li>
         <li class="treeview {{ Route::currentRouteNamed('portfolio.*') ? 'active' : '' }}"> <a href="#"> <i class="fa fa-book"></i> <span>Portolio</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
           <ul class="treeview-menu">
